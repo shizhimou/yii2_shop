@@ -1,60 +1,61 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
-    <br>
-</p>
+# 一、商品品牌
+##需求
+```$xslt
+1.品牌管理功能涉及品牌的列表展示、品牌添加、修改、删除功能。
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+2.品牌需要保存缩略图和简介。
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+3.品牌删除使用逻辑删除。 
+```
+```php
+1.要点难点及解决方案
+1.1实现软删除
+解决方案
+①添加回收站按钮 用来改变品牌状态 需要写方法来改变
+②改变品牌的状态 status 
+③再显示商品
+④用到了两个显示方法 用来切换上架和下架的两个页面
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
-
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
-
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
-
-DIRECTORY STRUCTURE
--------------------
+1.2删除临时文件
+解决方案
+①找到临时文件的位置 拼装路径
+②语法 unlike（路径）
+③删除数据库数据
+④判定临时文件是否存在
+⑤删除临时文件
+```
+# 二、商品文章
+```php
+1.要点难点及解决方案
+1.1创建普通显示表和内容表
+原因：提高了查询速度 减少了数据库的压力 也便于自己管理
+1.2实现连表显示
+hasOne 一对一
+hasMany 一对多
+用哪个对应就在哪个的models中写一下这个方法
+<?php
+public function getType()
+    {
+        return $this->hasOne(ArticleType::className(),['id'=>'type_id']);
+    }
+?>
+1.3实现webuploader的图片上传方式
+通过composer下载
+地址：https://packagist.org/packages/bailangzhan/yii2-webuploader
+运行下面代码
+composer require bailangzhan/yii2-webuploader
+修改params.php中配置
+通过查看以下网址，进行修改和配置
+http://www.yiichina.com/extension/1336
 
 ```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
-```
+
+
+
+
+
+
+
+
+
+

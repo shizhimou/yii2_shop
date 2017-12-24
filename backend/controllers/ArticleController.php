@@ -70,7 +70,6 @@ class ArticleController extends \yii\web\Controller
         if($request->isPost){
             //绑定数据
             $model->load($request->post());
-            $path='';
             if ($model->validate()) {
             }
             $model->create_time = time();
@@ -101,10 +100,17 @@ class ArticleController extends \yii\web\Controller
     public function actionDel($id)
     {
 
-        $type = ArticleContent::find()->all();
-        if ($model = Article::findOne($id)->delete()) {
+        $url = \Yii::getAlias('@webroot/').Article::findOne($id)->img;
+
+//            var_dump(111);exit;
+        if (Article::findOne($id)->delete()) {
+            if (is_file($url)) {
+                unlink($url);
+            }
             return $this->redirect(['index']);
         }
+
+
 
     }
 
@@ -136,7 +142,6 @@ class ArticleController extends \yii\web\Controller
         $model1->save();
 //        var_dump($model1->view_count);exit;
         $model = ArticleContent::findOne($id);
-
 
         $request = \Yii::$app->request;
         if ($request->isPost) {
