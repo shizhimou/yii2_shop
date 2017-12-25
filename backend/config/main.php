@@ -7,7 +7,8 @@ $params = array_merge(
 );
 
 return [
-    'defaultRoute'=>'brand/index',
+    'layout'=>'register',
+    'defaultRoute'=>'admin/index',
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
@@ -18,7 +19,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => \backend\models\Admin::className(),
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],

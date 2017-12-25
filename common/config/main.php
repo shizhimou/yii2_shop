@@ -1,5 +1,6 @@
 <?php
 return [
+    'defaultRoute'=>'admin/index',
     'language'=>'zh-CN',
     'timeZone'=>'PRC',
     'aliases' => [

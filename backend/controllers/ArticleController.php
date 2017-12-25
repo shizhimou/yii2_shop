@@ -5,17 +5,39 @@ namespace backend\controllers;
 use backend\models\Article;
 use backend\models\ArticleContent;
 use backend\models\ArticleType;
+use flyok666\qiniu\Qiniu;
+use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 
 class ArticleController extends \yii\web\Controller
 {
+    public function actions()
+    {
+        return [
+            'upload' => [
+                'class' => 'kucha\ueditor\UEditorAction',
+//                'config' => [
+//                    "imageUrlPrefix"  => "http://www.baidu.com",//图片访问路径前缀
+//                    "imagePathFormat" => "/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}", //上传保存路径
+//                "imageRoot" => \Yii::getAlias("@webroot"),
+            ],
+//        ]
+    ];
+}
+
     public function actionIndex()
     {
-//        echo date('H:i:s',time());
-        $articles = Article::find()->orderBy('id')->all();
 
-        return $this->render('index',compact('articles','content'));
+        $article = Article::find()->orderBy('id');
+
+        $count = $article->count();
+        $pagination = new Pagination(
+            ['totalCount' => $count, 'pageSize' => 3]
+
+        );
+        $articles = $article->offset($pagination->offset)->limit($pagination->limit)->all();
+        return $this->render('index',compact('articles','content','pagination'));
     }
 
     public function actionAdd()
@@ -30,11 +52,11 @@ class ArticleController extends \yii\web\Controller
         if($request->isPost){
             //绑定数据
             $model->load($request->post());
-            $path='';
+
             if ($model->validate()) {
             }
-                $model->create_time = time();
-                if ($model->save(false)) {
+//                $model->create_time = time();
+                if ($model->save()) {
 //                    \Yii::$app->session->setFlash('success','添加文章成功');
 //                    var_dump($model->id);exit;
                 }
@@ -103,7 +125,9 @@ class ArticleController extends \yii\web\Controller
         $url = \Yii::getAlias('@webroot/').Article::findOne($id)->img;
 
 //            var_dump(111);exit;
+
         if (Article::findOne($id)->delete()) {
+            ArticleContent::findOne($id)->delete();
             if (is_file($url)) {
                 unlink($url);
             }
@@ -142,7 +166,6 @@ class ArticleController extends \yii\web\Controller
         $model1->save();
 //        var_dump($model1->view_count);exit;
         $model = ArticleContent::findOne($id);
-
         $request = \Yii::$app->request;
         if ($request->isPost) {
             $model->load($request->post());
@@ -158,7 +181,7 @@ class ArticleController extends \yii\web\Controller
 
     }
 
-    public function actionUpload()
+    public function actionUploads()
     {
 
 //        {"code": 0, "url": "http://domain/图片地址", "attachment": "图片地址"}
@@ -180,9 +203,36 @@ class ArticleController extends \yii\web\Controller
                 ] ;
                 //var_dump($result);
            return json_encode($result);
-
             }
         }
 
+
+
+        $config = [
+            'accessKey' => 'EAd29Qrh05q78_cZhajAWcbB1wYCBLyHLqkanjOG',//AK
+            'secretKey' => '_R5o3ZZpPJvz8bNGBWO9YWSaNbxIhpsedbiUtHjW',//SK
+            'domain' => 'http://p1ht4b07w.bkt.clouddn.com',//临时域名
+            'bucket' => 'php0830',//空间名称
+            'area' => Qiniu::AREA_HUADONG//区域
+        ];
+//
+////var_dump($_FILES);exit;
+//
+//
+        $qiniu = new Qiniu($config);//实例化对象
+//var_dump($qiniu);exit;
+        $key = time();//上传后的文件名  多文件上传有坑
+//        var_dump($_FILES);exit;
+        $qiniu->uploadFile($_FILES['file']["tmp_name"], $key);//调用上传方法上传文件
+        $url = $qiniu->getLink($key);//得到上传后的地址
+//
+        //返回的结果
+        $result = [
+            'code' => 0,
+            'url' => $url,
+            'attachment' => $url
+
+        ];
+        return json_encode($result);
     }
 }

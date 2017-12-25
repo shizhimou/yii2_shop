@@ -26,8 +26,9 @@ class ArticleType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type'], 'required'],
+            [['type','status','sort','is_help'], 'required'],
             [['type'], 'string', 'max' => 255],
+            [['intro'],'safe'],
         ];
     }
 
@@ -39,6 +40,10 @@ class ArticleType extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'type' => '文章类型',
+            'intro' => '类型简介',
+            'status' => '类型状态',
+            'sort' => '类型排序',
+            'is_help' => '类型帮助',
         ];
     }
 

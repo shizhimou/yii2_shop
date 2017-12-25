@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "006efd8f21f4d41b366df4bd5aeb3129",
+    "content-hash": "fa452b1a35fb4153d6dded3cd8d5a0c8",
     "packages": [
         {
             "name": "bailangzhan/yii2-webuploader",
@@ -358,6 +358,110 @@
                 "html"
             ],
             "time": "2017-06-03T02:28:16+00:00"
+        },
+        {
+            "name": "flyok666/yii2-qiniu",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flyok666/yii2-qiniu.git",
+                "reference": "c3d4b794570f159395bb59102482b68b57f44b45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/flyok666/yii2-qiniu/c3d4b794570f159395bb59102482b68b57f44b45.zip",
+                "reference": "c3d4b794570f159395bb59102482b68b57f44b45",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "flyok666\\qiniu\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "flyok666",
+                    "email": "flyok666@qq.com"
+                }
+            ],
+            "description": "yii2上传到七牛云存储",
+            "keywords": [
+                "qiniu",
+                "upload",
+                "yii"
+            ],
+            "time": "2017-07-18T14:48:14+00:00"
+        },
+        {
+            "name": "flyok666/yii2-uploadifive",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flyok666/yii2-uploadifive.git",
+                "reference": "03fa60bd5ceeef40c660a03891173b4497bb4494"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/flyok666/yii2-uploadifive/03fa60bd5ceeef40c660a03891173b4497bb4494.zip",
+                "reference": "03fa60bd5ceeef40c660a03891173b4497bb4494",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "flyok666\\uploadifive\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "flyok666",
+                    "email": "flyok666@126.com"
+                }
+            ],
+            "description": "yii2-uploadifive",
+            "time": "2017-07-18T14:57:48+00:00"
+        },
+        {
+            "name": "kucha/ueditor",
+            "version": "1.21",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BigKuCha/yii2-ueditor-widget.git",
+                "reference": "59e4ab2533bec1b182ce38241a1567e78d57a509"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/BigKuCha/yii2-ueditor-widget/59e4ab2533bec1b182ce38241a1567e78d57a509.zip",
+                "reference": "59e4ab2533bec1b182ce38241a1567e78d57a509",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "kucha\\ueditor\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BigKuCha",
+                    "email": "nevermore1989@vip.qq.com"
+                }
+            ],
+            "description": "desc",
+            "time": "2017-01-15T06:29:37+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

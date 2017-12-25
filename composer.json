@@ -18,7 +18,10 @@
         "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "bailangzhan/yii2-webuploader": "^1.1"
+        "bailangzhan/yii2-webuploader": "^1.1",
+        "flyok666/yii2-uploadifive": "^1.0",
+        "kucha/ueditor": "*",
+        "flyok666/yii2-qiniu": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

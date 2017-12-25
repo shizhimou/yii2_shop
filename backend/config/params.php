@@ -7,7 +7,7 @@ return [
     'domain' => '/',
     'webuploader' => [
         // 后端处理图片的地址，value 是相对的地址
-        'uploadUrl' => 'upload',
+        'uploadUrl' => 'uploads',
         // 多文件分隔符
         'delimiter' => ',',
         // 基本配置
@@ -33,5 +33,9 @@ return [
     'article_status'=>[
     1=>'上架',
     2=>'下架'
+],
+    'is_help'=>[
+    1=>'不是',
+    2=>'是'
 ]
 ];

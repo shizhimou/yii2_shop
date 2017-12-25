@@ -3,6 +3,8 @@
 namespace backend\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "article".
@@ -29,17 +31,29 @@ class Article extends \yii\db\ActiveRecord
         return 'article';
     }
 
+    public function behaviors()
+    {
+
+        return [
+          [
+              'class'=>TimestampBehavior::className(),
+              'attributes' => [
+                  ActiveRecord::EVENT_BEFORE_INSERT=>'create_time']
+          ],
+        ];
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['author', 'title', 'sort', 'status', 'create_time', 'view_count', 'type_id', 'content_id'], 'required'],
+            [['author', 'title', 'status', 'sort','create_time', 'view_count', 'type_id', 'content_id'], 'required'],
             [['sort', 'status', 'create_time', 'view_count', 'type_id', 'content_id'], 'integer'],
             [['author'], 'string', 'max' => 30],
             [['title'], 'string', 'max' => 100],
             [['img'], 'safe'],
+            [['sort'],'unique'],
         ];
     }
 
@@ -63,7 +77,10 @@ class Article extends \yii\db\ActiveRecord
         ];
     }
 
-
+    public function getTime()
+    {
+        return date('Y-m-d H:i:s',$this->create_time);
+    }
     public function getType()
     {
 

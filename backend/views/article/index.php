@@ -29,8 +29,13 @@
 
                 <td><?=$article->title?></td>
                 <td><?=$article->sort?></td>
-                <td><?=Yii::$app->params['article_status'][$article->status]?></td>
-                <td><?=date('Y-m-d H:i:s',$article->create_time)?></td>
+
+
+                <td><?php if (Yii::$app->params['status'][$article->status]=='激活'){
+                    echo '<span class="glyphicon glyphicon-ok"></span>';}else{
+                        echo '<span class="glyphicon glyphicon-remove"></span>';
+                    }?></td>
+                <td><?=$article->time?></td>
 
                 <td><?=\yii\helpers\Html::img('/'.$article->img,['height'=>30])?></td>
                 <td><?=$article->view_count?></td>
@@ -44,7 +49,14 @@
                 </td>
             </tr>
         <?php endforeach;?>
-
-
     </table>
+
+    <?php
+    use yii\widgets\LinkPager;
+
+    echo LinkPager::widget(
+        ['pagination' => $pagination]
+    );
+
+    ?>
 

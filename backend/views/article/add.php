@@ -16,10 +16,13 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'sort') ?>
         <?= $form->field($model, 'type_id')->dropDownList($types) ?>
         <?= $form->field($model, 'status')->radioList([1=>'上架',2=>'下架'],['value'=>1]) ?>
-        <?= $form->field($content, 'content')->textarea() ?>
-
     <?= $form->field($model, 'img')->widget('manks\FileInput', [
     ]);?>
+        <?= $form->field($content,'content')->widget('kucha\ueditor\UEditor',[
+        ]);?>
+
+
+
 
 
     <div class="form-group">
@@ -28,3 +31,5 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div><!-- article-add -->
+
+

@@ -39,7 +39,7 @@ public function getType()
         return $this->hasOne(ArticleType::className(),['id'=>'type_id']);
     }
 ?>
-1.3实现webuploader的图片上传方式
+1.3.1实现webuploader的图片上传方式
 通过composer下载
 地址：https://packagist.org/packages/bailangzhan/yii2-webuploader
 运行下面代码
@@ -47,8 +47,82 @@ composer require bailangzhan/yii2-webuploader
 修改params.php中配置
 通过查看以下网址，进行修改和配置
 http://www.yiichina.com/extension/1336
+1.3.2文件上传到七牛云上
 
+github上搜索 yii2 qiniu
+composer require flyok666/yii2-qiniu
+
+
+composer.json:
+
+{
+  "require": {
+    "flyok666/yii2-qiniu": "~1.0.0"
+  }
+}
+Usage
+
+<?php
+
+use flyok666\qiniu\Qiniu;
+$config = [
+'accessKey'=>'xxx',
+'secretKey'=>'xxx',
+'domain'=>'http://demo.domain.com/',
+'bucket'=>'demo',
+'area'=>Qiniu::AREA_HUABEI
+];
+
+
+
+$qiniu = new Qiniu($config);
+$key = time();
+$qiniu->uploadFile($_FILES['tmp_name'],$key);
+$url = $qiniu->getLink($key);
 ```
+```php
+1.4实现富文本框编辑内容
+GitHub上搜索 yii2 udeitor 使用大裤衩叔叔的
+
+安装
+
+Either run
+
+$ php composer.phar require kucha/ueditor "*"
+or add
+
+"kucha/ueditor": "*"
+to the require section of your composer.json file.
+
+应用
+
+controller:
+
+public function actions()
+{
+    return [
+        'upload' => [
+            'class' => 'kucha\ueditor\UEditorAction',
+        ]
+    ];
+}
+view:
+
+echo \kucha\ueditor\UEditor::widget(['name' => 'xxxx']);
+或者：
+
+echo $form->field($model,'colum')->widget('kucha\ueditor\UEditor',[]);
+
+1.5使用多模型实现文章和内容的同步提交解决用户体验
+```
+
+
+
+
+
+
+
+
 
 
 
