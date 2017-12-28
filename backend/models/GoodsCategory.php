@@ -82,4 +82,9 @@ class GoodsCategory extends \yii\db\ActiveRecord
             'intro' => '简介',
         ];
     }
+
+    public function getDep()
+    {
+        return str_repeat('--',$this->depth*2).$this->name;
+    }
 }

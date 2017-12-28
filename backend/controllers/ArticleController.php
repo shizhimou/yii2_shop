@@ -210,8 +210,6 @@ class ArticleController extends \yii\web\Controller
 //            }
 //        }
 
-
-
         $config = [
             'accessKey' => 'q_rcZdza58NonrULcS_feNKfk893O8lq6oxF1Omv',//AK
             'secretKey' => 'I7ztXLwTOSTOcWY8svGLxhFZzsVcEiXiHvjZP9ed',//SK

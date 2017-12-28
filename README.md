@@ -115,7 +115,7 @@ echo $form->field($model,'colum')->widget('kucha\ueditor\UEditor',[]);
 
 1.5使用多模型实现文章和内容的同步提交解决用户体验
 ```
-#三、商品分类
+# 三、商品分类
 ```php
 1.1需求
 ①完成增删改查
@@ -124,6 +124,8 @@ GitHub中搜索 yii2 nested
 完成配置 根据文档进行配置 实现其功能
 ③分类列表要有层次结构
 github中搜索 yii2 ztree
+④显示无限极列表
+搜索 yii2-treegrid 
 
 view中
 <?= \liyuze\ztree\ZTree::widget([
@@ -159,6 +161,26 @@ EOC;
 
 
 ```
+# 四、商品管理
+```php
+1.1需求完成增删改查
+
+1.2流程
+①建立商品表 goods
+②在视图中用droplist获取另外一张表的值
+$type = GoodsCategory::find()->asArray()->all();
+$types = ArrayHelper::map($type,'id','name');
+③利用hason连接表获取值get方法牛逼
+
+1.3要点与难点分析
+①自动生成货单号
+②实现多图片上传 并且回显
+③实现搜索关键字
+
+
+```
+
+
 
 
 

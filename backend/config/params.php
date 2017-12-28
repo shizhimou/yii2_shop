@@ -12,7 +12,7 @@ return [
         'delimiter' => ',',
         // 基本配置
         'baseConfig' => [
-            'defaultImage' => 'http://img1.imgtn.bdimg.com/it/u=2056478505,162569476&fm=26&gp=0.jpg',
+            'defaultImage' => '',
             'disableGlobalDnd' => true,
             'accept' => [
                 'title' => 'Images',

@@ -48,6 +48,10 @@ use yii\widgets\ActiveForm;
 $js=<<<EOC
 var treeObj = $.fn.zTree.getZTreeObj("w1");
 treeObj.expandAll(true);
+var node = treeObj.getNodeByParam("id", "$model->parent_id", null);
+
+treeObj.selectNode(node);
+console.debug(node);
 EOC;
 
 $this->registerJs($js);

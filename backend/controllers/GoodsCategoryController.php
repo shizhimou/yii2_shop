@@ -3,7 +3,9 @@
 namespace backend\controllers;
 
 use backend\models\GoodsCategory;
+use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
+use yii\db\Exception;
 use yii\helpers\Json;
 
 class GoodsCategoryController extends \yii\web\Controller
@@ -12,6 +14,11 @@ class GoodsCategoryController extends \yii\web\Controller
     {
 
         $models= GoodsCategory::find()->orderBy('tree,lft');
+        $query = GoodsCategory::find();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
         $count = $models->count();
         $pagination = new Pagination(
             ['totalCount' => $count, 'pageSize' => 5]
@@ -21,7 +28,7 @@ class GoodsCategoryController extends \yii\web\Controller
 
 //            var_dump($goods);exit;
 
-        return $this->render('index',compact('models','pagination'));
+        return $this->render('index',compact('models','pagination','dataProvider'));
 
     }
 
@@ -84,25 +91,34 @@ class GoodsCategoryController extends \yii\web\Controller
 
             if ($model->validate()) {
 
-//                if($model->parent_id==0){
-//                    $cate = GoodsCategory::findOne($model->parent_id);
-                    \Yii::$app->session->setFlash('success','修改'.$model->name.'父节点成功');
+                try{
+
+                    if ($model->parent_id == 0) {
+                        $cate = GoodsCategory::findOne($model->parent_id);
+                        \Yii::$app->session->setFlash('success', '修改' . $model->name . '父节点成功');
 //                    echo '<pre>';
 //                    var_dump($model);exit;
-                    $model->save();
+                        $model->save();
 
-//                }else{
+                    } else {
 
-//                    $cate = GoodsCategory::findOne($model->parent_id);
-//                    \Yii::$app->session->setFlash('success','把'.$model->name.'添加到'.$cate->name.'中成功');
-//                    echo '<pre>';
+                        $cate = GoodsCategory::findOne($model->parent_id);
+                        $model->prependTo($cate);
+                        \Yii::$app->session->setFlash('success', '把' . $model->name . '添加到' . $cate->name . '中成功');
+//                  echo '<pre>';
 //                    var_dump($model);exit;
-//                    $model->prependTo($cate);
-//                    $model->save();
-//                }
-                    return $this->redirect('index');
 
+                    }
+                }catch (Exception $exception){
+                  \Yii::$app->session->setFlash('danger',$exception->getMessage());
+
+                  return $this->refresh();
+                }
+
+
+                return $this->redirect('index');
             }
+
             return $this->refresh();
         }
         return $this->render('add', ['model' => $model,'good'=>$good]);
