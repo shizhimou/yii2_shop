@@ -115,6 +115,51 @@ echo $form->field($model,'colum')->widget('kucha\ueditor\UEditor',[]);
 
 1.5使用多模型实现文章和内容的同步提交解决用户体验
 ```
+#三、商品分类
+```php
+1.1需求
+①完成增删改查
+②分类无限级
+GitHub中搜索 yii2 nested
+完成配置 根据文档进行配置 实现其功能
+③分类列表要有层次结构
+github中搜索 yii2 ztree
+
+view中
+<?= \liyuze\ztree\ZTree::widget([
+        'setting' => '{
+			data: {
+				simpleData: {
+					enable: true,
+					pIdKey: "parent_id",
+				}
+			},
+			callback: {
+				onClick: function(e,treeId, treeNode){
+				$("#goodscategory-parent_id").val(treeNode.id);
+				},
+			}
+			
+			
+			
+		}',
+        'nodes' => $good,
+    ]);
+    ?>       
+  //展开分类  
+ <?php
+ $js=<<<EOC
+ var treeObj = $.fn.zTree.getZTreeObj("w1");
+ treeObj.expandAll(true);
+EOC;
+ $this->registerJs($js);
+ ?>   
+
+网站 www.treejs.cn 
+
+
+```
+
 
 
 

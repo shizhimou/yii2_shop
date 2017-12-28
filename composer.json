@@ -21,7 +21,9 @@
         "bailangzhan/yii2-webuploader": "^1.1",
         "flyok666/yii2-uploadifive": "^1.0",
         "kucha/ueditor": "*",
-        "flyok666/yii2-qiniu": "^1.0"
+        "flyok666/yii2-qiniu": "^1.0",
+        "creocoder/yii2-nested-sets": "^0.9.0",
+        "liyuze/yii2-ztree": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

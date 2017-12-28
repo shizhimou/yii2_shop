@@ -48,12 +48,9 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['author', 'title', 'status', 'sort','create_time', 'view_count', 'type_id', 'content_id'], 'required'],
-            [['sort', 'status', 'create_time', 'view_count', 'type_id', 'content_id'], 'integer'],
-            [['author'], 'string', 'max' => 30],
-            [['title'], 'string', 'max' => 100],
-            [['img'], 'safe'],
-            [['sort'],'unique'],
+            [['author', 'title', 'status', 'sort', 'type_id'], 'required'],
+            [['img', 'content_id'],'safe'],
+            [['sort'],'unique']
         ];
     }
 

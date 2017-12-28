@@ -30,7 +30,6 @@ class ArticleController extends \yii\web\Controller
     {
 
         $article = Article::find()->orderBy('id');
-
         $count = $article->count();
         $pagination = new Pagination(
             ['totalCount' => $count, 'pageSize' => 3]
@@ -52,8 +51,11 @@ class ArticleController extends \yii\web\Controller
         if($request->isPost){
             //绑定数据
             $model->load($request->post());
-
+//            echo '<pre>';
+//var_dump($model->content_id);exit;
             if ($model->validate()) {
+//                echo '<pre>';
+//var_dump($model);exit;
             }
 //                $model->create_time = time();
                 if ($model->save()) {
@@ -67,9 +69,11 @@ class ArticleController extends \yii\web\Controller
         $request = \Yii::$app->request;
         if ($request->isPost) {
             $content->load($request->post());
+//            echo '<pre>';
+//            var_dump($content->content);exit;
             if ($content->validate()) {
                 $content->id = $model->id;
-//                var_dump($content->id);exit;
+//                var_dump($content->content);exit;
                 $content->save();
                 return $this->redirect(['index']);
             }
@@ -186,33 +190,33 @@ class ArticleController extends \yii\web\Controller
 
 //        {"code": 0, "url": "http://domain/图片地址", "attachment": "图片地址"}
 //        var_dump($_FILES);exit;
-        $file = UploadedFile::getInstanceByName('file');
-
-       //var_dump($file);
-        if($file){
-            $path = 'images/article/'.time().'.'.$file->extension;
-//            var_dump($path);
-
-
-            if($file->saveAs($path,false)){
-
-                $result = [
-                    'code'=>0,
-                    'url'=>'/'.$path,
-                    'attachment'=>$path,
-                ] ;
-                //var_dump($result);
-           return json_encode($result);
-            }
-        }
+//        $file = UploadedFile::getInstanceByName('file');
+//
+//       //var_dump($file);
+//        if($file){
+//            $path = 'images/article/'.time().'.'.$file->extension;
+////            var_dump($path);
+//
+//
+//            if($file->saveAs($path,false)){
+//
+//                $result = [
+//                    'code'=>0,
+//                    'url'=>'/'.$path,
+//                    'attachment'=>$path,
+//                ] ;
+//                //var_dump($result);
+//           return json_encode($result);
+//            }
+//        }
 
 
 
         $config = [
-            'accessKey' => 'EAd29Qrh05q78_cZhajAWcbB1wYCBLyHLqkanjOG',//AK
-            'secretKey' => '_R5o3ZZpPJvz8bNGBWO9YWSaNbxIhpsedbiUtHjW',//SK
-            'domain' => 'http://p1ht4b07w.bkt.clouddn.com',//临时域名
-            'bucket' => 'php0830',//空间名称
+            'accessKey' => 'q_rcZdza58NonrULcS_feNKfk893O8lq6oxF1Omv',//AK
+            'secretKey' => 'I7ztXLwTOSTOcWY8svGLxhFZzsVcEiXiHvjZP9ed',//SK
+            'domain' => 'http://p1jrt03ee.bkt.clouddn.com',//临时域名
+            'bucket' => 'yii2',//空间名称
             'area' => Qiniu::AREA_HUADONG//区域
         ];
 //

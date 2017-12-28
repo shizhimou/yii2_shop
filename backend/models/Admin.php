@@ -17,7 +17,6 @@ use yii\web\IdentityInterface;
 class Admin extends \yii\db\ActiveRecord implements IdentityInterface
 {
 
-
     public $imgFile;
     public $code;
     /**
@@ -37,7 +36,7 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
             [['num'],'unique'],
             [['name', 'age', 'sex','password','num'], 'required'],
             [['imgFile'], 'image', 'skipOnEmpty' => false, 'extensions' => 'png,jpg,gif'],
-            [['code'],'captcha','captchaAction' => 'admin/captcha']
+//            [['code'],'captcha','captchaAction' => 'admin/captcha']
 
         ];
     }

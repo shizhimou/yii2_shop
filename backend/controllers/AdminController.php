@@ -33,7 +33,7 @@ class AdminController extends \yii\web\Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index','login'],
+                        'actions' => ['index','add','login'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -65,7 +65,6 @@ class AdminController extends \yii\web\Controller
 //        $cate = Author::find()->asArray()->all();
 //        $catess = ArrayHelper::map($cate,'id','author_name');
 //        var_dump($catess);
-
         $request = new Request();
         if ($request->isPost) {
 
@@ -158,7 +157,6 @@ class AdminController extends \yii\web\Controller
             return $this->redirect(['index']);
         }
     }
-
 
     public function actionLogin()
     {

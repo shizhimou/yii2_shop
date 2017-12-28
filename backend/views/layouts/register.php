@@ -37,12 +37,37 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => '品牌', 'url' => ['/brand/index']],
-        ['label' => '文章', 'url' => ['/article/index']],
-        ['label' => '商品', 'url' => ['/admin/contact']],
-    ];
+
+        ['label' => '品牌',
+            'items'=>[
+                ['label' => '显示品牌', 'url' => ['/brand/index']],
+                ['label' => '添加品牌', 'url' => ['/brand/add']],
+                ['label' => '编辑品牌', 'url' => ['/brand/edit']],
+                ],
+            ],
+//            'url' => ['/brand/index']],
+        ['label' => '文章',
+            'items'=>[
+                ['label' => '显示文章', 'url' => ['/article/index']],
+                ['label' => '添加文章', 'url' => ['/article/add']],
+                ['label' => '添加文章分类', 'url' => ['/article/type']],
+                ['label' => '编辑文章', 'url' => ['/article/edit']],
+            ],
+        ],
+//        ['label' => '文章', 'url' => ['/article/index']],
+        ['label' => '商品',
+            'items'=>[
+                ['label' => '显示商品分类', 'url' => ['/goods-category/index']],
+                ['label' => '添加商品分类', 'url' => ['/goods-category/add']],
+                ['label' => '编辑文章', 'url' => ['/goods/edit']],
+            ],
+        ],
+
+//        ['label' => '商品', 'url' => ['/admin/contact']],
+        ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => '注册', 'url' => ['/admin/add']];
+
         $menuItems[] = ['label' => '登录', 'url' => ['/admin/login']];
     } else {
         $menuItems[] = '<li>'

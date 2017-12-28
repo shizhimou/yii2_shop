@@ -27,7 +27,6 @@ class ArticleContent extends \yii\db\ActiveRecord
     {
         return [
             [['content'], 'required'],
-            [['content'], 'string'],
         ];
     }
 

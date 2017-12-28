@@ -37,7 +37,7 @@
                     }?></td>
                 <td><?=$article->time?></td>
 
-                <td><?=\yii\helpers\Html::img('/'.$article->img,['height'=>30])?></td>
+                <td><?=\yii\helpers\Html::img($article->img,['height'=>30])?></td>
                 <td><?=$article->view_count?></td>
                 <td><?=$article->type->type?></td>
 
