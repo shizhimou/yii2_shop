@@ -1,3 +1,4 @@
+<td><a href="<?=\yii\helpers\Url::to(['goods-category/index'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-share-alt">返回</span></a>
 <?php
 
 use yii\helpers\Html;
@@ -38,7 +39,7 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'intro') ?>
     
         <div class="form-group">
-            <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('添加', ['class' => 'btn btn-primary']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

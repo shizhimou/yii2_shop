@@ -3,8 +3,8 @@
 ?>
 <h1>文章列表</h1>
 
-<td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-success btn-sm">添加文章</a>
-<td><a href="<?=\yii\helpers\Url::to(['type'])?>" class="btn btn-success btn-sm">添加类型</a>
+<td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" title="添加文章">文章</span></a>
+<td><a href="<?=\yii\helpers\Url::to(['type'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" title="添加文章类型">类型</span></a>
     <table class="table table-bordered table-responsive table-hover">
         <tr>
             <td>编号</td>
@@ -43,20 +43,30 @@
 
                 <td><a href="content-edit?id=<?=$article->id?>">查看文章</a></td>
 
-                <td><a href="<?=\yii\helpers\Url::to(['edit','id'=>$article->id])?>" class="btn btn-warning btn-sm">编辑</a>
-                    <a href="<?=\yii\helpers\Url::to(['del','id'=>$article->id])?>" class="btn btn-danger btn-sm">删除</a>
+                <td><a href="<?=\yii\helpers\Url::to(['edit','id'=>$article->id])?>" ><span class="glyphicon glyphicon-edit" title="编辑"></span></a>
+                    <a href="<?=\yii\helpers\Url::to(['del','id'=>$article->id])?>" ><span class="glyphicon glyphicon-trash" title="删除" onclick="return confirm('您确定删除吗?')"></a>
 
                 </td>
             </tr>
         <?php endforeach;?>
     </table>
 
-    <?php
-    use yii\widgets\LinkPager;
 
-    echo LinkPager::widget(
-        ['pagination' => $pagination]
-    );
+    <style>
 
-    ?>
+        .center{
+
+            text-align: center;
+        }
+    </style>
+    <div class="center">
+        <?php
+        use yii\widgets\LinkPager;
+
+        echo LinkPager::widget(
+            ['pagination' => $pagination]
+        );
+
+        ?>
+    </div>
 

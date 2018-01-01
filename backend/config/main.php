@@ -7,8 +7,8 @@ $params = array_merge(
 );
 
 return [
-    'layout'=>'register',
-    'defaultRoute'=>'admin/index',
+
+    'defaultRoute'=>'goods/index',
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',

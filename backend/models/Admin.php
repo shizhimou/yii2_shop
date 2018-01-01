@@ -18,10 +18,11 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
 {
 
     public $imgFile;
-    public $code;
+//    public $code;
     /**
      * @inheritdoc
      */
+    public $role;
     public static function tableName()
     {
         return 'admin';
@@ -33,9 +34,10 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['num'],'unique'],
-            [['name', 'age', 'sex','password','num'], 'required'],
-            [['imgFile'], 'image', 'skipOnEmpty' => false, 'extensions' => 'png,jpg,gif'],
+//            [['num'],'unique'],
+//            [['name', 'age', 'sex','password','num'], 'required'],
+//            [['imgFile'], 'image', 'skipOnEmpty' => false, 'extensions' => 'png,jpg,gif'],
+            [['token','email','token_create_time','add_time','last_login_time','last_login_ip','num','name','age','sex','password','imgFile','role'],'safe']
 //            [['code'],'captcha','captchaAction' => 'admin/captcha']
 
         ];
@@ -53,8 +55,9 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
             'sex' => '性别',
             'imgFile' => '头像',
             'password'=>'密码',
-            'code'=>'验证码',
-            'num'=>'账号'
+//            'code'=>'验证码',
+            'num'=>'账号',
+            'role'=>'角色',
         ];
     }
 
@@ -107,7 +110,7 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-        // TODO: Implement getAuthKey() method.
+        return $this->token;
     }
 
     /**
@@ -120,6 +123,6 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        // TODO: Implement validateAuthKey() method.
+        return $this->getAuthKey()===$authKey;
     }
 }

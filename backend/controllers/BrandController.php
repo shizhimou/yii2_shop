@@ -3,15 +3,23 @@
 namespace backend\controllers;
 
 use backend\models\Brand;
+use yii\data\Pagination;
 use yii\web\UploadedFile;
 
 class BrandController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $brands = Brand::find()->orderBy('id')->where(['status'=>1])->all();
+        $brand = Brand::find()->orderBy('id')->where(['status'=>1]);
+        $count = $brand->count();
+        $pagination = new Pagination(
+            ['totalCount' => $count, 'pageSize' => 3]
 
-        return $this->render('index', ['brands' => $brands]);
+        );
+        $brands = $brand->offset($pagination->offset)->limit($pagination->limit)->all();
+        return $this->render('index',compact('brands','content','pagination'));
+
+
     }
 
     public function actionAdd()
@@ -105,9 +113,14 @@ class BrandController extends \yii\web\Controller
 
     public function actionRcl(){
         
-        $brands = Brand::find()->where(['status'=>2])->all();
+        $brand = Brand::find()->where(['status'=>2]);
+        $count = $brand->count();
+        $pagination = new Pagination(
+            ['totalCount' => $count, 'pageSize' => 3]
+        );
+        $brands = $brand->offset($pagination->offset)->limit($pagination->limit)->all();
+        return $this->render('rcl',compact('brands','content','pagination'));
 
-            return $this->render('rcl',compact('brands'));
 
     }
 

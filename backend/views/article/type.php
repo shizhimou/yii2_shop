@@ -1,3 +1,4 @@
+<td><a href="<?=\yii\helpers\Url::to(['article/index'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-share-alt">返回</span></a>
 <?php
 
 use yii\helpers\Html;

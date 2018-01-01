@@ -25,6 +25,7 @@ class Goods extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $imgFiles;
     public static function tableName()
     {
         return 'goods';
@@ -37,7 +38,7 @@ class Goods extends \yii\db\ActiveRecord
     {
         return [
             [['name',  'goods_category_id', 'brand_id', 'market_price', 'shop_price', 'status', 'sort'], 'required'],
-            [['name', 'logo', 'create_time', 'stock'], 'safe' ],
+            [['name', 'logo', 'create_time', 'stock','imgFiles'], 'safe' ],
             [['sn'],'unique']
         ];
     }

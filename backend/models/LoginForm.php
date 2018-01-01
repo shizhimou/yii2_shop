@@ -17,13 +17,17 @@ class LoginForm extends Model
     public $num;
     public $password;
     public $rememberMe;
+    public $last_login_time;
+    public $last_login_ip;
+    public $code;
 
 
     public function rules()
     {
         return [
-            [['num','password'],'required']
-
+            [['num','password'],'required'],
+            [['code'],'captcha','captchaAction' => 'admin/captcha'],
+            [['last_login_time','last_login_ip','rememberMe'],'safe']
         ];
     }
 
@@ -34,6 +38,7 @@ class LoginForm extends Model
             'num'=>'账号',
             'password'=>'密码',
             'rememberMe'=>'记住我',
+            'code'=>'验证码'
         ];
     }
 

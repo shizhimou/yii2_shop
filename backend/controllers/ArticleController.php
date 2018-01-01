@@ -60,7 +60,9 @@ class ArticleController extends \yii\web\Controller
 //                $model->create_time = time();
                 if ($model->save()) {
 //                    \Yii::$app->session->setFlash('success','添加文章成功');
-//                    var_dump($model->id);exit;
+//                    var_dump($model
+//
+//->id);exit;
                 }
 
             }
@@ -223,7 +225,7 @@ class ArticleController extends \yii\web\Controller
 //
         $qiniu = new Qiniu($config);//实例化对象
 //var_dump($qiniu);exit;
-        $key = time();//上传后的文件名  多文件上传有坑
+        $key = time();//上传后的文件名
 //        var_dump($_FILES);exit;
         $qiniu->uploadFile($_FILES['file']["tmp_name"], $key);//调用上传方法上传文件
         $url = $qiniu->getLink($key);//得到上传后的地址

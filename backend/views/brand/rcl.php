@@ -3,7 +3,7 @@
 ?>
 <h1>品牌列表</h1>
 
-<td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-success btn-sm">添加</a>
+<!--<td><a href="--><?//=\yii\helpers\Url::to(['add'])?><!--" class="btn btn-success btn-sm">添加</a>-->
 
     <table class="table table-bordered table-responsive table-hover">
         <tr>
@@ -24,11 +24,30 @@
                 <td><?=$brand->intro?></td>
                 <td><?=Yii::$app->params['status'][$brand->status]?></td>
                 <td><?=$brand->sort?></td>
-                <td><a href="<?=\yii\helpers\Url::to(['edit','id'=>$brand->id])?>" class="btn btn-warning btn-sm">编辑</a>
-                    <a href="<?=\yii\helpers\Url::to(['del','id'=>$brand->id])?>" class="btn btn-danger btn-sm">删除</a>
-                    <a href="<?=\yii\helpers\Url::to(['delrcl','id'=>$brand->id])?>" class="btn btn-warning btn-sm">还原</a></td>
+                <td><a href="<?=\yii\helpers\Url::to(['edit','id'=>$brand->id])?>" "><span class="glyphicon glyphicon-edit" title="编辑"></span></a>
+                    <a href="<?=\yii\helpers\Url::to(['del','id'=>$brand->id])?>" ><span class="glyphicon glyphicon-trash" title="删除" onclick="return confirm('您确定删除吗?')"></span></a>
+                    <a href="<?=\yii\helpers\Url::to(['delrcl','id'=>$brand->id])?>" ><span class="glyphicon glyphicon-share-alt" title="显示"></span></a>
+
+</td>
             </tr>
         <?php endforeach;?>
-
-
     </table>
+注意：删除品牌时，请删除相应的商品，否则商品不能显示！！！
+<style>
+
+    .center{
+
+        text-align: center;
+    }
+</style>
+<div class="center">
+    <?php
+    use yii\widgets\LinkPager;
+
+    echo LinkPager::widget(
+        ['pagination' => $pagination]
+    );
+
+    ?>
+</div>
+

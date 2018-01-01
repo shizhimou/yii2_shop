@@ -5,7 +5,7 @@ use backend\models\GoodsCategory;
 ?>
 <h1>商品分类</h1>
 
-<td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus">添加</span></a></td>
+<td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" title="添加分类">添加</span></a></td>
 
 
 <?php
@@ -40,15 +40,28 @@ use backend\models\GoodsCategory;
         'parentColumnName' => 'parent_id',
         'columns' => [
             'name',
-            'parent_id',
+            'intro',
             ['class' => 'yii\grid\ActionColumn']
         ]
     ]);
 
+    echo "注意：删除商品分类的时候，请先删除对应的商品，否则商品不能显示！！！";
+    ?>
 
+<style>
+
+    .center{
+
+        text-align: center;
+    }
+</style>
+<div class="center">
+    <?php
     use yii\widgets\LinkPager;
 
     echo LinkPager::widget(
         ['pagination' => $pagination]
     );
+
     ?>
+</div>

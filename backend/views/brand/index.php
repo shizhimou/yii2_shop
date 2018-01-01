@@ -3,8 +3,8 @@
 ?>
 <h1>品牌列表</h1>
 
-<td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-success btn-sm">添加</a>
-<td><a href="<?=\yii\helpers\Url::to(['rcl'])?>" class="btn btn-success btn-sm">回收站</a>
+<td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" title="添加品牌">添加</span></a>
+<td><a href="<?=\yii\helpers\Url::to(['rcl'])?>" class="btn btn-primary btn-sm" title="回收站">回收站</a>
     <table class="table table-bordered table-responsive table-hover">
         <tr>
             <td>品牌序号</td>
@@ -24,11 +24,28 @@
                 <td><?=$brand->intro?></td>
                 <td><?=Yii::$app->params['status'][$brand->status]?></td>
                 <td><?=$brand->sort?></td>
-                <td><a href="<?=\yii\helpers\Url::to(['edit','id'=>$brand->id])?>" class="btn btn-warning btn-sm">编辑</a>
-                    <a href="<?=\yii\helpers\Url::to(['del','id'=>$brand->id])?>" class="btn btn-danger btn-sm">删除</a>
-                <a href="<?=\yii\helpers\Url::to(['dal','id'=>$brand->id])?>" class="btn btn-warning btn-sm">回收站</a></td>
+                <td><a href="<?=\yii\helpers\Url::to(['edit','id'=>$brand->id])?>" ><span class="glyphicon glyphicon-edit" title="编辑"></span></a>
+                    <a href="<?=\yii\helpers\Url::to(['dal','id'=>$brand->id])?>" ><span class="glyphicon glyphicon-alert" title="你确定放入回收站？" onclick="return confirm('您确定放入回收站吗?')"></span></a>
+
             </tr>
         <?php endforeach;?>
 
 
     </table>
+    <style>
+
+        .center{
+
+            text-align: center;
+        }
+    </style>
+    <div class="center">
+        <?php
+        use yii\widgets\LinkPager;
+
+        echo LinkPager::widget(
+            ['pagination' => $pagination]
+        );
+
+        ?>
+    </div>

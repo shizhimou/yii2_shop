@@ -51,7 +51,6 @@ AppAsset::register($this);
                 ['label' => '显示文章', 'url' => ['/article/index']],
                 ['label' => '添加文章', 'url' => ['/article/add']],
                 ['label' => '添加文章分类', 'url' => ['/article/type']],
-                ['label' => '编辑文章', 'url' => ['/article/edit']],
             ],
         ],
 //        ['label' => '文章', 'url' => ['/article/index']],
@@ -59,7 +58,8 @@ AppAsset::register($this);
             'items'=>[
                 ['label' => '显示商品分类', 'url' => ['/goods-category/index']],
                 ['label' => '添加商品分类', 'url' => ['/goods-category/add']],
-                ['label' => '编辑文章', 'url' => ['/goods/edit']],
+                ['label' => '显示商品', 'url' => ['/goods/index']],
+                ['label' => '添加商品', 'url' => ['/goods/add']],
             ],
         ],
 

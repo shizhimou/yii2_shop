@@ -52,13 +52,13 @@ class GoodsCategoryController extends \yii\web\Controller
             if ($model->validate()) {
 
                 if($model->parent_id==0){
-                   \Yii::$app->session->setFlash('success','添加'.$model->name.'父节点成功');
+                   \Yii::$app->session->setFlash('info','添加'.$model->name.'父节点成功');
                     $model->makeRoot();
 
                 }else{
 
                     $cate = GoodsCategory::findOne($model->parent_id);
-                    \Yii::$app->session->setFlash('success','把'.$model->name.'添加到'.$cate->name.'中成功');
+                    \Yii::$app->session->setFlash('info','把'.$model->name.'添加到'.$cate->name.'中成功');
                     $model->prependTo($cate);
                 }
                     return $this->redirect('index');
@@ -95,7 +95,7 @@ class GoodsCategoryController extends \yii\web\Controller
 
                     if ($model->parent_id == 0) {
                         $cate = GoodsCategory::findOne($model->parent_id);
-                        \Yii::$app->session->setFlash('success', '修改' . $model->name . '父节点成功');
+                        \Yii::$app->session->setFlash('info', '修改' . $model->name . '父节点成功');
 //                    echo '<pre>';
 //                    var_dump($model);exit;
                         $model->save();
@@ -104,13 +104,13 @@ class GoodsCategoryController extends \yii\web\Controller
 
                         $cate = GoodsCategory::findOne($model->parent_id);
                         $model->prependTo($cate);
-                        \Yii::$app->session->setFlash('success', '把' . $model->name . '添加到' . $cate->name . '中成功');
+                        \Yii::$app->session->setFlash('info', '把' . $model->name . '添加到' . $cate->name . '中成功');
 //                  echo '<pre>';
 //                    var_dump($model);exit;
 
                     }
                 }catch (Exception $exception){
-                  \Yii::$app->session->setFlash('danger',$exception->getMessage());
+                  \Yii::$app->session->setFlash('info',$exception->getMessage());
 
                   return $this->refresh();
                 }
