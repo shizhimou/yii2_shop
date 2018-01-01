@@ -347,7 +347,7 @@ $manage->addChild($role,$manage->getPermission($permission));
 $manage->removeChildren($role)&&$manage->remove($role)；
 
 ```
-### 1.2需求 用户添加到角色中
+### 1.3需求 用户添加到角色中
 
 ```php
 1.在admin控制器中

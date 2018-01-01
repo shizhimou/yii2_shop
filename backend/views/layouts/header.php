@@ -286,14 +286,16 @@ use yii\helpers\Html;
                                 <?php if (Yii::$app->user->isGuest){
 
                                  echo  \yii\bootstrap\Html::a('Login',
-                                       ['admin/login'],
-                                       ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                                       ['/admin/login'],
+//                                     'data-method' => 'post',
+                                       [ 'class' => 'btn btn-default btn-flat']
                                        );
                                 }else{
                                echo  Html::a(
-                                    'Sign out',
+                                    'Logout',
                                     ['/admin/logout'],
-                                    ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+//                                   'data-method' => 'post',
+                                    [ 'class' => 'btn btn-default btn-flat']
                                 );
                                 }?>
                             </div>
