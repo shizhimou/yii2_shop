@@ -49,3 +49,12 @@
 
         ?>
     </div>
+
+    <?php
+    $JS=<<<JS
+  $(function() {
+    $('#w0-info').fadeOut(5000);
+  });
+JS;
+    $this->registerJs($JS);
+    ?>

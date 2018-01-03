@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
 
 /**
@@ -16,28 +17,50 @@ use yii\web\IdentityInterface;
  */
 class Admin extends \yii\db\ActiveRecord implements IdentityInterface
 {
+//    public function behaviors()
+//    {
+//       [
+//           'class'=>TimestampBehavior::className(),
+//            'attributes' => [
+//                self::EVENT_BEFORE_INSERT=>['last_login_time','last_login_ip'],
+//            ]
+//       ];
+//    }
+
 
     public $imgFile;
 //    public $code;
     /**
      * @inheritdoc
      */
-    public $role;
+    public $role=[];
     public static function tableName()
     {
         return 'admin';
     }
 
+    public function scenarios()
+{
+    $scenarios = parent::scenarios();
+    return array_merge($scenarios,[
+        'create'=>['name','password','imgFile','num','age','role','sex'],
+        'update'=>['name','age','imgFile','sex','role','num'],
+    ]);
+}
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-//            [['num'],'unique'],
-//            [['name', 'age', 'sex','password','num'], 'required'],
-//            [['imgFile'], 'image', 'skipOnEmpty' => false, 'extensions' => 'png,jpg,gif'],
-            [['token','email','token_create_time','add_time','last_login_time','last_login_ip','num','name','age','sex','password','imgFile','role'],'safe']
+//            [['num'],'unique','on' => 'create'],
+            [['name', 'age', 'sex','password','num','role'], 'required','on' => 'create'],
+            [['num'],'unique'],
+            [['name', 'age', 'sex','password','role'], 'required','on' => 'update'],
+            [['imgFile'], 'image', 'skipOnEmpty' => false, 'extensions' => 'png,jpg,gif'],
+//            [['token','email','token_create_time','add_time','num','name','age','sex','password','imgFile','role'],'safe'],
+//            [['num','name','age','sex','password','imgFile','role'],'safe'],
+//            [['last_login_time','last_login_ip'],'safe'],
 //            [['code'],'captcha','captchaAction' => 'admin/captcha']
 
         ];

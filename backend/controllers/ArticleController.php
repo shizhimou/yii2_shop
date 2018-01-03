@@ -10,7 +10,7 @@ use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 
-class ArticleController extends \yii\web\Controller
+class ArticleController extends BaseController
 {
     public function actions()
     {

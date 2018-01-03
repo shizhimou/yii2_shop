@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-class ArticleContentController extends \yii\web\Controller
+class ArticleContentController extends BaseController
 {
     public function actionIndex()
     {

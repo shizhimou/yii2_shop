@@ -5,20 +5,22 @@ namespace backend\controllers;
 use backend\models\AuthItem;
 use yii\data\Pagination;
 
-class AuthItemController extends \yii\web\Controller
+class AuthItemController extends BaseController
 {
     public function actionIndex()
     {
-//        $model = AuthItem::find();
-        $authManager=\Yii::$app->authManager;
-        $model = $authManager->getPermissions();
 
-//        $count = $model['name']->count();
-//        $pagination = new Pagination(
-//            ['totalCount' => $count, 'pageSize' => 5]
-//        );
-//        $model = $model->offset($pagination->offset)->limit($pagination->limit)->all();
-        return $this->render('index',compact('model'));
+        //两种显示方法，这种是rbac专属
+//        $authManager=\Yii::$app->authManager;
+//        $model = $authManager->getPermissions();
+        //这种是分页专用
+        $model = AuthItem::find()->where(['type'=>2]);
+        $count = $model->count();
+        $pagination = new Pagination(
+            ['totalCount' => $count, 'pageSize' => 5]
+        );
+        $model = $model->offset($pagination->offset)->limit($pagination->limit)->all();
+        return $this->render('index',compact('model','pagination'));
     }
 
     public function actionAdd()
@@ -37,7 +39,8 @@ class AuthItemController extends \yii\web\Controller
             $premission->description = $model->description;
             $manage->add($premission);
             \Yii::$app->session->setFlash('info','添加'.$model->description.'权限成功');
-            return $this->redirect(['auth-item/index']);
+//            return $this->redirect(['auth-item/index']);
+            return $this->refresh();
         }
 //        var_dump($model->getErrors());exit;
 
@@ -68,7 +71,7 @@ class AuthItemController extends \yii\web\Controller
             }
 
         }
-        return $this->render('add',compact('model'));
+        return $this->render('edit',compact('model'));
 //        var_dump($model->getErrors());exit;
     }
 

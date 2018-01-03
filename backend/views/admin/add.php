@@ -14,7 +14,7 @@ echo $form->field($admin, 'sex')->inline()->radioList(['男' => '男', '女' => 
 //echo $form->field($admin, 'intro')->textarea();
 echo \yii\helpers\Html::img('/' . $admin->img, ['height' => 30]);
 echo $form->field($admin, 'imgFile')->fileInput();
-echo $form->field($admin, 'role');
+echo $form->field($admin, 'role')->checkboxList($roles);
 //echo $form->field($admin, 'bid')->dropDownList($catess);
 
 //echo $form->field($admins,'create_time')->textInput();

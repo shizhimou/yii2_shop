@@ -17,9 +17,10 @@ class LoginForm extends Model
     public $num;
     public $password;
     public $rememberMe;
-    public $last_login_time;
-    public $last_login_ip;
+//    public $last_login_time;
+//    public $last_login_ip;
     public $code;
+
 
 
     public function rules()
@@ -27,7 +28,8 @@ class LoginForm extends Model
         return [
             [['num','password'],'required'],
             [['code'],'captcha','captchaAction' => 'admin/captcha'],
-            [['last_login_time','last_login_ip','rememberMe'],'safe']
+//            [['last_login_time','last_login_ip','rememberMe'],'safe']
+            [['rememberMe'],'safe']
         ];
     }
 

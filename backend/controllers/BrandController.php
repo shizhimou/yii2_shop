@@ -3,10 +3,11 @@
 namespace backend\controllers;
 
 use backend\models\Brand;
+use backend\models\Goods;
 use yii\data\Pagination;
 use yii\web\UploadedFile;
 
-class BrandController extends \yii\web\Controller
+class BrandController extends BaseController
 {
     public function actionIndex()
     {
@@ -99,15 +100,23 @@ class BrandController extends \yii\web\Controller
 
     public function actionDel($id)
     {
-        $url = \Yii::getAlias('@webroot/').Brand::findOne($id)->logo;
+        $goods = Goods::find()->where(['brand_id'=>$id])->one();
+//        var_dump($goods);exit;
+        $brand = Brand::findOne($id);
+        if($goods===null || $goods->brand_id===$brand->id){
+            \Yii::$app->session->setFlash('info','删除品牌的时候，请先删除对应的商品，否则品牌不能显示！！！');
+            return $this->redirect(['brand/index']);
 
-//            var_dump(111);exit;
-        if (Brand::findOne($id)->delete()) {
-            if (is_file($url)) {
-                unlink($url);
+        }else{
+            $url = \Yii::getAlias('@webroot/').Brand::findOne($id)->logo;
+            if (Brand::findOne($id)->delete()) {
+                if (is_file($url)) {
+                    unlink($url);
+                }
+                return $this->redirect(['brand/index']);
             }
-           return $this->redirect(['brand/index']);
         }
+
 
     }
 

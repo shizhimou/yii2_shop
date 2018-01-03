@@ -32,23 +32,23 @@
 
 
 </table>
-<!--<style>-->
-<!---->
-<!--    .center{-->
-<!---->
-<!--        text-align: center;-->
-<!--    }-->
-<!--</style>-->
-<!--<div class="center">-->
-<!--    --><?php
-//    use yii\widgets\LinkPager;
-//
-//    echo LinkPager::widget(
-//        ['pagination' => $pagination]
-//    );
-//
-//    ?>
-<!--</div>-->
+<style>
+
+    .center{
+
+        text-align: center;
+    }
+</style>
+<div class="center">
+    <?php
+    use yii\widgets\LinkPager;
+
+    echo LinkPager::widget(
+        ['pagination' => $pagination]
+    );
+
+    ?>
+</div>
 
 <?php
 $JS=<<<JS

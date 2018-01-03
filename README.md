@@ -363,6 +363,39 @@ $auth->assign($role,$admin->id);
 3.在视图中添加role属性文本框；
 ```
 
+### 1.4需求 实现RBAC功能
+```php
+1.创建过滤器模型
+public function beforeAction($action)
+    {
+        if (!\Yii::$app->user->can($action->uniqueId)) {
+         throw new HttpException(403,'你没有访问权限');
+    }
+        return parent::beforeAction($action);
+    }     
+2.创建一个基类注入过滤器
+public function behaviors()
+    {
+       return [
+            'rbac' => [
+                'class' => RbacFilter::className(),
+            ],
+        ];
+    }
+3.其他控制器继承 基类控制器
+
+```
+### 1.5需求 使用组件实现RBAC功能
+
+```php
+找到组件
+mdmsoft/yii2-admin
+执行
+composer require mdmsoft/yii2-admin "~2.0" -vvv
+```
+
+
+
 
 
 

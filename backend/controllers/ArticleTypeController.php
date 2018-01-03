@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use backend\models\ArticleType;
 
-class ArticleTypeController extends \yii\web\Controller
+class ArticleTypeController extends BaseController
 {
     public function actionIndex()
     {

@@ -15,6 +15,7 @@ return [
         'authManager'=>[
 
             'class'=>'yii\rbac\DbManager',
+            'defaultRoles' => ['admin/login','admin/captcha'],
         ]
     ],
 ];

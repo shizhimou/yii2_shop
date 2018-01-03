@@ -2,12 +2,7 @@
 /* @var $this yii\web\View */
 ?>
 <h1>商品列表</h1>
-
-
-<!--<td><a href="--><?//=\yii\helpers\Url::to(['type'])?><!--" class="btn btn-success btn-sm">添加类型</a>-->
-
     <div class="row">
-
         <div class="pull-left">
             <td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" title="添加商品">添加</span></a>
 
@@ -28,7 +23,6 @@
                 </div>
                 -
                 <div class="form-group">
-
                     <input type="text" class="form-control" name="maxprice" size="3" placeholder="最高价" value="<?=Yii::$app->request->get("maxprice");?>">
 
                 </div>
@@ -37,10 +31,9 @@
                 <div class="form-group">
 <!--                    <label for="exampleInputEmail2">Email</label>-->
                     <input type="text" class="form-control" name="keyword"  placeholder="请输入关键字" value="<?=Yii::$app->request->get("keyword");?>">
-
-
-
                 </div>
+
+
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" ></span></button>
             </form>
 
@@ -60,8 +53,6 @@
             <td>库存</td>
             <td>状态</td>
             <td>排序</td>
-<!--            <td></td>-->
-
             <td>上架时间</td>
             <td>商品详情</td>
             <td>操作</td>
@@ -119,14 +110,11 @@
 
 <?php
 $JS=<<<JS
-
   $(function() {
-    $('#w0-info').fadeOut(3000);
+    $('#w0-info').fadeOut(5000);
   });
 JS;
-
 $this->registerJs($JS);
-
 ?>
 
 

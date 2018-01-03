@@ -2,13 +2,14 @@
 
 namespace backend\controllers;
 
+use backend\models\Goods;
 use backend\models\GoodsCategory;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 use yii\db\Exception;
 use yii\helpers\Json;
 
-class GoodsCategoryController extends \yii\web\Controller
+class GoodsCategoryController extends BaseController
 {
     public function actionIndex()
     {
@@ -127,9 +128,20 @@ class GoodsCategoryController extends \yii\web\Controller
 
     public function actionDel($id)
     {
-        if (GoodsCategory::findOne($id)->deleteWithChildren()) {
-            return $this->redirect('index');
+
+        $goods = Goods::find()->where(['goods_category_id'=>$id])->one();
+        $cate = GoodsCategory::findOne($id);
+//        var_dump($goods->goods_category_id);exit;
+        if ($goods===null || $goods->goods_category_id===$cate->id ){
+            \Yii::$app->session->setFlash('info','删除商品分类的时候，请先删除对应的商品，否则商品不能显示！！！');
+            return $this->redirect(['goods-category/index']);
+        }else{
+
+            if (GoodsCategory::findOne($id)->deleteWithChildren()) {
+                return $this->redirect('index');
+            }
         }
+
 
     }
 

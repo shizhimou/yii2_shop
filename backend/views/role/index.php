@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-<h1>权限列表</h1>
+<h1>角色列表</h1>
 <td><a href="<?=\yii\helpers\Url::to(['role/add'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" title="添加商品">添加</span></a></td>
 
 <table class="table table-bordered table-responsive table-hover">

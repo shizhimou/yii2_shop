@@ -65,3 +65,11 @@ use backend\models\GoodsCategory;
 
     ?>
 </div>
+<?php
+$JS=<<<JS
+  $(function() {
+    $('#w1-info').fadeOut(5000);
+  });
+JS;
+$this->registerJs($JS);
+?>

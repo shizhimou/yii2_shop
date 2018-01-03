@@ -4,6 +4,7 @@
         <tr>
             <td>用户序号</td>
             <td>用户姓名</td>
+<!--            <td>所属角色</td>-->
             <td>用户年龄</td>
             <td>用户性别</td>
             <td>用户头像</td>
@@ -20,7 +21,7 @@
                 <td><?=$models->sex?></td>
                 <td><?=\yii\helpers\Html::img('/'.$models->img,['height'=>30])?></td>
                 <td><?=date('Y-m-d H:i:s',$models->last_login_time)?></td>
-                <td><?=$models->last_login_ip?></td>
+                <td><?=long2ip($models->last_login_ip)?></td>
 
                 <td><a href="<?=\yii\helpers\Url::to(['edit','id'=>$models->id])?>" ><span class="glyphicon glyphicon-edit" title="编辑"></a>
                     <a href="<?=\yii\helpers\Url::to(['del','id'=>$models->id])?>" ><span class="glyphicon glyphicon-trash" title="删除" onclick="return confirm('您确定删除吗?')"></span></a></td>

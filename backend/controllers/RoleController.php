@@ -7,7 +7,7 @@ use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii\rbac\Role;
 
-class RoleController extends \yii\web\Controller
+class RoleController extends BaseController
 {
     public function actionIndex()
     {
@@ -33,7 +33,7 @@ class RoleController extends \yii\web\Controller
             $role = $manage->createRole($model->name);
             $role->description = $model->description;
             if ($manage->add($role)) {
-
+//                var_dump($model->permissions);exit;
                 if ($model->permissions) {
                     foreach ($model->permissions as $permission){
                         $manage->addChild($role,$manage->getPermission($permission));
@@ -42,7 +42,8 @@ class RoleController extends \yii\web\Controller
                 }
             }
             \Yii::$app->session->setFlash('info','添加'.$model->description.'权限成功');
-            return $this->redirect(['role/index']);
+//            return $this->redirect(['role/index']);
+            return $this->refresh();
         }
 //        var_dump($model->getErrors());exit;
          $permissions = $manage->getPermissions();
@@ -71,7 +72,7 @@ class RoleController extends \yii\web\Controller
             if ($role){
                 $role->description = $model->description;
                 if ($manage->update($model->name,$role)) {
-
+//                     var_dump($role);exit;
                     $manage->removeChildren($role);
                     if ($model->permissions) {
                         foreach ($model->permissions as $permission){
@@ -93,7 +94,7 @@ class RoleController extends \yii\web\Controller
         $permissions = $manage->getPermissions();
 
         $permissions=ArrayHelper::map($permissions,'name','description');
-        return $this->render('add',compact('model','permissions'));
+        return $this->render('edit',compact('model','permissions'));
 //        var_dump($model->getErrors());exit;
     }
 

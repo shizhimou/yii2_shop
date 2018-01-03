@@ -11,7 +11,7 @@ use flyok666\qiniu\Qiniu;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 
-class GoodsController extends \yii\web\Controller
+class GoodsController extends BaseController
 {
 
     public function actions()

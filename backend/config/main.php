@@ -7,8 +7,10 @@ $params = array_merge(
 );
 
 return [
-
-    'defaultRoute'=>'goods/index',
+//    'as rbac' => [
+//        'class' => \backend\filter\RbacFilter::className(),
+//    ],
+    'defaultRoute'=>'admin/login',
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',

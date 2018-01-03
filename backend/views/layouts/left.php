@@ -21,7 +21,7 @@
                 <p><?php if (Yii::$app->user->isGuest){
                         echo '<span class="hidden-xs">guest</span>';
                     }else{
-                        echo  Yii::$app->user->identity->name;
+                        echo Yii::$app->user->identity->name;
                     }?></p>
 <!--                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
                 <?php if (Yii::$app->user->isGuest){
@@ -92,9 +92,12 @@
                         'icon' => 'share',
                         'url' => '/brand/index',
                         'items' => [
-                            ['label' => '显示品牌', 'icon' => 'th-list', 'url' => ['/brand/index'],'visible' => Yii::$app->user->can('brand/index')],
+                            ['label' => '显示品牌', 'icon' => 'th-list', 'url' => ['/brand/index'],
+'visible' => Yii::$app->user->can('brand/index')
+                            ],
                             ['label' => '添加品牌', 'icon' => 'plus', 'url' => ['/brand/add'],
-                                'visible' => Yii::$app->user->can('brand/add')],
+                                'visible' => Yii::$app->user->can('brand/add')
+                            ],
                         ],
                         'visible' => Yii::$app->user->can('brand')
                     ],
