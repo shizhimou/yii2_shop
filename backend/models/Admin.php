@@ -27,7 +27,7 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
 //       ];
 //    }
 
-
+//    public $username;
     public $imgFile;
 //    public $code;
     /**
@@ -43,8 +43,8 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
 {
     $scenarios = parent::scenarios();
     return array_merge($scenarios,[
-        'create'=>['name','password','imgFile','num','age','role','sex'],
-        'update'=>['name','age','imgFile','sex','role','num'],
+        'create'=>['username','password','imgFile','num','age','role','sex'],
+        'update'=>['username','age','imgFile','sex','role','num'],
     ]);
 }
     /**
@@ -54,9 +54,9 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
 //            [['num'],'unique','on' => 'create'],
-            [['name', 'age', 'sex','password','num','role'], 'required','on' => 'create'],
+            [['username', 'age', 'sex','password','num','role'], 'required','on' => 'create'],
             [['num'],'unique'],
-            [['name', 'age', 'sex','password','role'], 'required','on' => 'update'],
+            [['username', 'age', 'sex','password','role'], 'required','on' => 'update'],
             [['imgFile'], 'image', 'skipOnEmpty' => false, 'extensions' => 'png,jpg,gif'],
 //            [['token','email','token_create_time','add_time','num','name','age','sex','password','imgFile','role'],'safe'],
 //            [['num','name','age','sex','password','imgFile','role'],'safe'],

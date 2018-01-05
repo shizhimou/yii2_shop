@@ -70,6 +70,7 @@ class AdminController extends BaseController
                 //由于验证码只需要验证一次，所以save为false
                 if ($admin->save(false)) {
 //                    var_dump($admin->role);exit;
+
                     foreach ($admin->role as $roleName){
 //                      var_dump($roleName);exit;
                         //通过权限对象得到角色
@@ -120,13 +121,9 @@ class AdminController extends BaseController
                 if ($admin->save(false)) {
                     //得到角色
                     $role = $auth->getRolesByUser($id);
-//                    $role = array_keys($role);
-//                    var_dump($role);exit;
                     foreach ($role as $roname){
-//                        var_dump($roname);exit;
                         $role = $auth->revoke($roname,$id);
                     }
-//                    var_dump($role);exit;
                     foreach ($admin->role as $roleName) {
 //                      var_dump($roleName);exit;
                         //通过权限对象得到角色

@@ -16,7 +16,7 @@
         <?php foreach ($model as $models):?>
             <tr>
                 <td><?=$models->id?></td>
-                <td><?=$models->name?></td>
+                <td><?=$models->username?></td>
                 <td><?=$models->age?></td>
                 <td><?=$models->sex?></td>
                 <td><?=\yii\helpers\Html::img('/'.$models->img,['height'=>30])?></td>

@@ -17,10 +17,16 @@ use yii\helpers\Html;
             <span class="sr-only">Toggle navigation</span>
         </a>
 
+
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
-
+                <li class="dropdown messages-menu">
+                    <a href="http://www.shop.com/rbac" class="dropdown-toggle">
+                        <i>rbac</i>
+<!--                        <span class="label label-success">4</span>-->
+                    </a>
+                </li>
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -243,7 +249,7 @@ use yii\helpers\Html;
                         <?php if (Yii::$app->user->isGuest){
                             echo '<span class="hidden-xs">guest</span>';
                         }else{
-                            echo  Yii::$app->user->identity->name;
+                            echo  Yii::$app->user->identity->username;
                         }?>
 
                     </a>
@@ -260,7 +266,7 @@ use yii\helpers\Html;
                                 <?php if (Yii::$app->user->isGuest){
                                     echo '<span class="hidden-xs">guest</span>';
                                 }else{
-                                    echo  Yii::$app->user->identity->name .'- 毒奶粉';
+                                    echo  Yii::$app->user->identity->username .'- 毒奶粉';
                                 }?>
                                 <small>Member since Nov. 2012</small>
                             </p>

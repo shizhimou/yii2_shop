@@ -3,7 +3,7 @@
 
 <?php
 $form = \yii\bootstrap\ActiveForm::begin();
-echo $form->field($admin, 'name');
+echo $form->field($admin, 'username');
 echo $form->field($admin, 'num');
 echo $form->field($admin, 'password')->passwordInput();
 

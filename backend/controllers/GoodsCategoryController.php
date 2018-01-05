@@ -73,7 +73,7 @@ class GoodsCategoryController extends BaseController
 
     }
 
-    public function actionEdit($id)
+    public function actionUpdate($id)
     {
 
         $good =  GoodsCategory::find()->asArray()->all();
@@ -126,7 +126,7 @@ class GoodsCategoryController extends BaseController
 
     }
 
-    public function actionDel($id)
+    public function actionDelete($id)
     {
 
         $goods = Goods::find()->where(['goods_category_id'=>$id])->one();
@@ -145,4 +145,56 @@ class GoodsCategoryController extends BaseController
 
     }
 
+    public function actionView($id)
+    {
+
+        $good =  GoodsCategory::find()->asArray()->all();
+
+//       $good[] =
+        $good = Json::encode($good);
+//       var_dump($good);exit;
+
+        $model = GoodsCategory::findOne($id);
+
+        $request= \Yii::$app->request;
+
+        if ($request->isPost) {
+
+            $model->load($request->post());
+
+            if ($model->validate()) {
+
+                try{
+
+                    if ($model->parent_id == 0) {
+                        $cate = GoodsCategory::findOne($model->parent_id);
+                        \Yii::$app->session->setFlash('info', '修改' . $model->name . '父节点成功');
+//                    echo '<pre>';
+//                    var_dump($model);exit;
+                        $model->save();
+
+                    } else {
+
+                        $cate = GoodsCategory::findOne($model->parent_id);
+                        $model->prependTo($cate);
+                        \Yii::$app->session->setFlash('info', '把' . $model->name . '添加到' . $cate->name . '中成功');
+//                  echo '<pre>';
+//                    var_dump($model);exit;
+
+                    }
+                }catch (Exception $exception){
+                    \Yii::$app->session->setFlash('info',$exception->getMessage());
+
+                    return $this->refresh();
+                }
+
+
+                return $this->redirect('index');
+            }
+
+            return $this->refresh();
+        }
+        return $this->render('view', ['model' => $model,'good'=>$good]);
+
+    }
 }
