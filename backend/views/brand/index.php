@@ -5,6 +5,7 @@
 
 <td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" title="添加品牌">添加</span></a>
 <td><a href="<?=\yii\helpers\Url::to(['rcl'])?>" class="btn btn-primary btn-sm" title="回收站">回收站</a>
+    <div class="table-responsive">
     <table class="table table-bordered table-responsive table-hover">
         <tr>
             <td>品牌序号</td>
@@ -32,6 +33,7 @@
 
 
     </table>
+    </div>
     <style>
 
         .center{

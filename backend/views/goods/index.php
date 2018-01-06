@@ -39,7 +39,7 @@
 
         </div>
     </div>
-
+<div class="table-responsive">
     <table class="table table-bordered table-responsive table-hover">
         <tr>
             <td>编号</td>
@@ -88,7 +88,7 @@
             </tr>
         <?php endforeach;?>
     </table>
-
+</div>
 <style>
 
     .center{

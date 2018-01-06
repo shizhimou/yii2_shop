@@ -73,7 +73,7 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'name' => '姓名',
+            'username' => '姓名',
             'age' => '年龄',
             'sex' => '性别',
             'imgFile' => '头像',

@@ -4,7 +4,7 @@
 <h1>品牌列表</h1>
 
 <!--<td><a href="--><?//=\yii\helpers\Url::to(['add'])?><!--" class="btn btn-success btn-sm">添加</a>-->
-
+<div class="table-responsive">
     <table class="table table-bordered table-responsive table-hover">
         <tr>
             <td>品牌序号</td>
@@ -32,6 +32,7 @@
             </tr>
         <?php endforeach;?>
     </table>
+</div>
 注意：删除品牌时，请删除相应的商品，否则商品不能显示！！！
 <style>
 

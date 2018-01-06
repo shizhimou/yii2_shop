@@ -19,7 +19,7 @@ return [
     'modules' => [
             'rbac' => [
                 'class' => 'mdm\admin\Module',
-                'layout' => 'left-menu',
+
             ]
     ],
     'components' => [

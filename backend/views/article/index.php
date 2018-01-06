@@ -5,6 +5,7 @@
 
 <td><a href="<?=\yii\helpers\Url::to(['add'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" title="添加文章">文章</span></a>
 <td><a href="<?=\yii\helpers\Url::to(['type'])?>" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" title="添加文章类型">类型</span></a>
+    <div class="table-responsive">
     <table class="table table-bordered table-responsive table-hover">
         <tr>
             <td>编号</td>
@@ -51,7 +52,7 @@
         <?php endforeach;?>
     </table>
 
-
+    </div>
     <style>
 
         .center{

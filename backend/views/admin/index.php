@@ -1,5 +1,8 @@
 <!--<td><a href="--><?//=\yii\helpers\Url::to(['add'])?><!--" class="btn btn-success btn-sm">注册</a>-->
 <h1>管理员列表</h1>
+<div class="table-responsive">
+
+
     <table class="table table-bordered table-responsive table-hover">
         <tr>
             <td>用户序号</td>
@@ -30,6 +33,7 @@
 
 
     </table>
+</div>
 <style>
 
     .center{
