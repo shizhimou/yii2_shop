@@ -90,8 +90,8 @@ $fieldOptions2 = [
 <!--        </div>-->
         <!-- /.social-auth-links -->
 
-        <a href="#">忘记密码</a>   &ensp;
-        <a href="add" class="text-center">注册</a>
+<!--        <a href="#">忘记密码</a>   &ensp;-->
+<!--        <a href="add" class="text-center">注册</a>-->
 
     </div>
     <!-- /.login-box-body -->
