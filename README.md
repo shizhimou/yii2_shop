@@ -393,6 +393,12 @@ mdmsoft/yii2-admin
 执行
 composer require mdmsoft/yii2-admin "~2.0" -vvv
 ```
+```php
+上线更新失败用下面这句
+git reset --hard
+上线更新
+git pull
+```
 
 
 
