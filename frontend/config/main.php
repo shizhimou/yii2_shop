@@ -7,7 +7,8 @@ $params = array_merge(
 );
 
 return [
-    'layout'=>'register',
+    'defaultRoute'=>'user/index',
+    'layout'=>false,
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -17,7 +18,7 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
-            'identityClass' => \frontend\models\Admin::className(),
+            'identityClass' => \frontend\models\User::className(),
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],

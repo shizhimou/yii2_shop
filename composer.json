@@ -26,7 +26,8 @@
         "liyuze/yii2-ztree": "*",
         "leandrogehlen/yii2-treegrid": "*",
         "dmstr/yii2-adminlte-asset": "^2.6",
-        "mdmsoft/yii2-admin": "~2.0"
+        "mdmsoft/yii2-admin": "~2.0",
+        "mrgoon/aliyun-sms": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

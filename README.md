@@ -400,6 +400,16 @@ git reset --hard
 git pull
 ```
 
+```php
+
+400错误，srcf关闭；
+可以在表单中加上隐藏域
+百度地址
+https://www.cnblogs.com/cnn2017/p/6800679.html
+```
+
+
+
 
 
 

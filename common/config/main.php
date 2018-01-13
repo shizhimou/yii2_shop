@@ -1,7 +1,7 @@
 <?php
 return [
 
-    'defaultRoute'=>'admin/index',
+//    'defaultRoute'=>'admin/index',
     'language'=>'zh-CN',
     'timeZone'=>'PRC',
     'aliases' => [

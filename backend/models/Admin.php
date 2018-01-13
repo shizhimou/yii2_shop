@@ -19,7 +19,7 @@ class Admin extends \yii\db\ActiveRecord implements IdentityInterface
 {
 //    public function behaviors()
 //    {
-//       [
+//       return [
 //           'class'=>TimestampBehavior::className(),
 //            'attributes' => [
 //                self::EVENT_BEFORE_INSERT=>['last_login_time','last_login_ip'],
