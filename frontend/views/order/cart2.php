@@ -13,7 +13,7 @@
     <script type="text/javascript" src="/modules/js/cart2.js"></script>
 
 </head>
-<body>
+<!--<div>-->
 <!-- 顶部导航 start -->
 <?php
 
@@ -41,7 +41,7 @@ include_once Yii::getAlias("@app/views/common/nav.php");
 
 <div style="clear:both;"></div>
 
-<form action="" method="post" id="alldata">
+<!--<form action="" method="post" id="alldata">-->
     <!-- 主体部分 start -->
     <div class="fillin w990 bc mt15">
         <div class="fillin_hd">
@@ -141,7 +141,7 @@ include_once Yii::getAlias("@app/views/common/nav.php");
                         <?php foreach (Yii::$app->params['SendType'] as $k=>$v):?>
                             <tr class="<?=$k==0?"cur":""?>">
                                 <td>
-                                    <input type="radio" name="delivery" <?=$k==0?"checked":""?> value="<?=$v['money']?>" id="vel"/><?=$v['type']?>
+                                    <input type="radio" name="delivery" data ="fei" <?=$k==0?"checked":""?> value="<?=$v['money']?>" id="vel"/><?=$v['type']?>
 
                                 </td>
                                 <td><?=$v['money']?></td>
@@ -236,14 +236,16 @@ include_once Yii::getAlias("@app/views/common/nav.php");
         </div>
         <!-- 商品清单 end -->
 
-    </div>
+<!--    </div>-->
 
     <div class="fillin_ft">
         <a href="javascript:;" class="checks"><span>提交订单</span></a>
+
         <p>应付总额：<strong id="all">￥<?php echo $money+10 ?>.00元</strong></p>
 
     </div>
-
+<!--</form>-->
+</div>
     <!-- 主体部分 end -->
 
     <div style="clear:both;"></div>
@@ -251,7 +253,7 @@ include_once Yii::getAlias("@app/views/common/nav.php");
 
     <script>
         var some="";
-        $("input[type=radio]").click(function () {
+        $("input[data=fei]").click(function () {
             var vel = ($(this).parent().next().text());
 //        alert(($(this).parent().next().text()));
             $("#em").text(vel);
@@ -285,7 +287,12 @@ include_once Yii::getAlias("@app/views/common/nav.php");
            var All =   ($("input[type=radio]:checked").serialize()) +"&money="+some ;
 //           alert(All);
             $.post("/order/orders",All,function (data) {
-                console.dir(data);
+                console.debug(data);
+
+//                    alert(111);
+                   window.location.href="/order/carts?id="+data;
+
+
             });
 //            $.get("/order/detail",che,function (data) {
 //                console.dir(data);

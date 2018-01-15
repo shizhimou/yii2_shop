@@ -25,6 +25,20 @@ class CartController  extends Controller
 //添加购物车
     public function actionCart($id,$num)
     {
+        //通过id找到商品，判定商品是否存在
+         $goodsOne = Goods::findOne($id);
+
+         if (!$goodsOne){
+             return $this->goHome();
+         }
+
+         if ($goodsOne->stock<$num){
+             return "<script>
+          alert('库存不足');
+          history.go(-1);
+</script>";
+         }
+//        var_dump($goodsOne);exit;
         if (\Yii::$app->user->isGuest) {
             //判定是否存在cookie 存在修改 不存在新增
 
